@@ -12,10 +12,11 @@ const mCors = require('cors')                                   // to access API
 
 
 
-// Connecting with mongoDB
+// 1. Connecting with mongoDB
 mMongoose.connect('mongodb+srv://tahmeedul:cK4H6VVF9fPQPYF6@cluster0.mvhfs.mongodb.net/contacts?retryWrites=true&w=majority', 
 {useNewUrlParser: true, useUnifiedTopology: true})
 
+// 2. Check database is connected or not 
 const mDb = mMongoose.connection
 // if not connected to mongoDB
 mDb.on('error', (err) => {
@@ -24,6 +25,19 @@ mDb.on('error', (err) => {
 // if connected to mongoDB
 mDb.once('open', () => {
     console.log('Connected to mongoDB')
+})
+
+// 3. Create a schema
+const mSchema = mMongoose.Schema
+
+const mContactsSchema = new mSchema({
+    name: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: ""
+    }
 })
 
 
