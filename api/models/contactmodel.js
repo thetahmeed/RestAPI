@@ -46,7 +46,7 @@ const mContactsSchema = new mSchema({
             validator: (v) => {
                 return mValidator.isEmail(v)
             },
-            message: `${v} is not an email`
+            message: `{VALUE} is not an email`
         }
     }
     
@@ -54,3 +54,5 @@ const mContactsSchema = new mSchema({
 
 // 4. Create a model
 const mContactsModel = mMongoose.model('Contact', mContactsSchema)
+
+module.exports = mContactsSchema
