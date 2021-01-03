@@ -36,13 +36,17 @@ const mContactsSchema = new mSchema({
         required: true
     },
     phone: {
-        type: ""
+        type: String,
+        minlength: 11
     }
 })
 
+// 4. Create a model
+const mContactsModel = mMongoose.model('Contact', mContactsSchema)
+
 
 // Emporting mContactsRoute
-const mContactsRoute = require('./api/contacts/contactsroute')
+const mContactsRoute = require('./api/routes/contactsroute')
 
 const mApp = mExpress()
 
