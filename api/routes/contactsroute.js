@@ -10,7 +10,13 @@ const mContactsRoute = mExpress.Router()
 
 
 // Importing controller
-const {getAllContacts, postNewContact, getSingleContactById} = require('../controllers/contactscontroller')
+const {
+    getAllContacts,
+    postNewContact,
+    getSingleContactById,
+    updateContactById,
+    deleteContactById
+} = require('../controllers/contactscontroller')
 
 // Getting all post
 mContactsRoute.get('/', getAllContacts)
@@ -24,16 +30,12 @@ mContactsRoute.get('/:id', getSingleContactById)
 // Updating a post
 mContactsRoute.put('/:id', (req, res, next) => {
     res.json({
-        message : "Updating a post"
+        message: "Updating a post"
     })
 })
 
 // Deleting a post
-mContactsRoute.delete('/:id', (req, res, next) => {
-    res.json({
-        message : "Deleting a post"
-    })
-})
+mContactsRoute.delete('/:id', deleteContactById)
 
 
 
