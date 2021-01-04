@@ -8,7 +8,7 @@ const mExpress = require('express')
 const mContactsRoute = mExpress.Router()
 
 // Importing model
-const ContactsModel = require('../models/contactmodel')
+const mContactsModel = require('../models/contactmodel')
 
 // Getting all post
 mContactsRoute.get('/', (req, res, next) => {
@@ -44,10 +44,10 @@ mContactsRoute.get('/:id', (req, res, next) => {
 // Posting a new post
 mContactsRoute.post('/', (req, res, next) => {
 
-    const contactmodel = new ContactsModel({
+    const contactmodel = new mContactsModel({
         // we can check validity here
         name: req.body.name,
-        phone: req.body.name,
+        phone: req.body.phone,
         email: req.body.email
     })
 

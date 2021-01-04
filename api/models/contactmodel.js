@@ -10,24 +10,9 @@ const mValidator = require('validator')
 // 1. Importing mongoDB
 const mMongoose = require('mongoose')
 
-/*
-// 2. Check database is connected or not 
-const mDb = mMongoose.connection
-// if not connected to mongoDB
-mDb.on('error', (err) => {
-    console.log('Not connected')
-})
-// if connected to mongoDB
-mDb.once('open', () => {
-    console.log('Connected to mongoDB')
-})
-*/
-
-// 3. Create a schema
+// 2. Create a schema
 const mSchema = mMongoose.Schema
-
 const mContactsSchema = new mSchema({
-
     name: {
         type: String,
         trim: true,
@@ -49,10 +34,9 @@ const mContactsSchema = new mSchema({
             message: `{VALUE} is not an email`
         }
     }
-    
 })
 
-// 4. Create a model
-const mContactsModel = mMongoose.model('Contact', mContactsSchema)
+// 4. Create a model (Important: model name should be the same as this class name)
+const contactsmodel = mMongoose.model('Contact', mContactsSchema)
 
-module.exports = mContactsSchema
+module.exports = contactsmodel

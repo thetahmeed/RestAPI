@@ -10,6 +10,21 @@ const mMorgan = require('morgan')
 const mBodyParser = require('body-parser')                      // to extracts the data, those are given by the body
 const mCors = require('cors')                                   // to access API from all port
 
+// Connecting with mongoDB
+mMongoose.connect('mongodb+srv://tahmeedul:cK4H6VVF9fPQPYF6@cluster0.mvhfs.mongodb.net/contacts?retryWrites=true&w=majority', 
+{useNewUrlParser: true, useUnifiedTopology: true})
+
+// 2. Check database is connected or not 
+const mDb = mMongoose.connection
+// if not connected to mongoDB
+mDb.on('error', (err) => {
+    console.log('Not connected')
+})
+// if connected to mongoDB
+mDb.once('open', () => {
+    console.log('Connected to mongoDB')
+})
+
 
 // Importing mContactsRoute
 const mContactsRoute = require('./api/routes/contactsroute')
