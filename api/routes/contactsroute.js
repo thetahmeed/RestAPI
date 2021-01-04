@@ -8,7 +8,6 @@ const mExpress = require('express')
 const mContactsRoute = mExpress.Router()
 
 
-
 // Importing controller
 const {
     getAllContacts,
@@ -32,11 +31,6 @@ mContactsRoute.put('/:id', updateContactById)
 
 // Deleting a post
 mContactsRoute.delete('/:id', deleteContactById)
-
-
-
-
-
 
 
 // Exporting mRoute
