@@ -13,6 +13,10 @@ const mContactsModel = require('../models/contactmodel')
 // Getting all post
 mContactsRoute.get('/', (req, res, next) => {
 
+    mContactsModel.find()
+                .then(data => res.json({data}))
+                .catch(err => console.log(err))
+
     /* 
     // extracting data from the body
     const name = req.body.name
