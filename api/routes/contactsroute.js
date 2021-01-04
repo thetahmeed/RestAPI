@@ -14,24 +14,13 @@ const mContactsModel = require('../models/contactmodel')
 mContactsRoute.get('/', (req, res, next) => {
 
     mContactsModel.find()
-                .then(data => res.json({data}))
-                .catch(err => console.log(err))
-
-    /* 
-    // extracting data from the body
-    const name = req.body.name
-    const email = req.body.email
-
-    res.json({
-        name,
-        email
-        /*
-        or
-        name: name
-        email: email
-        */ /*
-    })
-    */
+                .then(data => res.status(200).json({data}))
+                .catch(err => {
+                    res.status(500).json({
+                        message: "Error:",
+                        error: err
+                    })
+                }) 
 })
 
 // Getting a single post
@@ -50,7 +39,7 @@ mContactsRoute.post('/', (req, res, next) => {
 
     const contactmodel = new mContactsModel({
         // we can check validity here
-        name: req.body.name,
+        name: req.body.name,                                            // extracting data from the body
         phone: req.body.phone,
         email: req.body.email
     })
