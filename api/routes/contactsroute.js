@@ -46,8 +46,12 @@ mContactsRoute.post('/', (req, res, next) => {
 
     contactmodel.save()
             .then(data => res.status('201').json(data))
-            .catch(err => console.log(err))
-
+            .catch(err => {
+                res.status(500).json({
+                    message: "Error:",
+                    error: err
+                })
+            })
 })
 
 
