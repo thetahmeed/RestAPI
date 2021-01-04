@@ -38,7 +38,7 @@ const singInUser = (req, res, next) => {
     
     User.findOne({email: userEmail})
         .then(data => {
-            // checking email is used or not
+             // checking email is used or not
             if(data){
                 // password is matched ot not
                 mBcrypt.compare(userPassword, data.password, (err, result) => {
@@ -55,6 +55,8 @@ const singInUser = (req, res, next) => {
                     }
 
                 })
+            }else{
+                res.send('User not exist')
             }
         })
         .catch(err => {
