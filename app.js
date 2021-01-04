@@ -14,7 +14,7 @@ const mCors = require('cors')                                   // to access API
 mMongoose.connect('mongodb+srv://tahmeedul:cK4H6VVF9fPQPYF6@cluster0.mvhfs.mongodb.net/contacts?retryWrites=true&w=majority', 
 {useNewUrlParser: true, useUnifiedTopology: true})
 
-// 2. Check database is connected or not 
+// Checking database is connected or not 
 const mDb = mMongoose.connection
 // if not connected to mongoDB
 mDb.on('error', (err) => {
@@ -28,6 +28,9 @@ mDb.once('open', () => {
 
 // Importing mContactsRoute
 const mContactsRoute = require('./api/routes/contactsroute')
+// Importing mUserRoute
+const mUserRoute = require('./api/routes/user')
+
 
 const mApp = mExpress()
 
@@ -50,6 +53,8 @@ mApp.use((req, res, next) => {
 
 
 mApp.use('/contacts', mContactsRoute)
+
+mApp.use('/user', mUserRoute)
 
 mApp.get('/', (req, res) => {
     res.send('Hello World!')
