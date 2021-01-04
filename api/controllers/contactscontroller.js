@@ -37,7 +37,16 @@ const postNewContact = (req, res, next) => {
 }
 
 const getSingleContactById = (req, res, next) => {
-
+    let getId = req.params.id
+    
+    mContactsModel.findById(getId)
+                .then(data => res.status(200).json(data))
+                .catch(err => {
+                    res.status(500).json({
+                        message: "Error:",
+                        error: err
+                    })
+                })
 }
 
 const updateContactById = (req, res, next) => {
@@ -51,5 +60,6 @@ const deleteContactById = (req, res, next) => {
 
 module.exports = {
     getAllContacts,
-    postNewContact
+    postNewContact,
+    getSingleContactById
 }

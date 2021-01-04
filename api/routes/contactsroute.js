@@ -10,7 +10,7 @@ const mContactsRoute = mExpress.Router()
 
 
 // Importing controller
-const {getAllContacts, postNewContact} = require('../controllers/contactscontroller')
+const {getAllContacts, postNewContact, getSingleContactById} = require('../controllers/contactscontroller')
 
 // Getting all post
 mContactsRoute.get('/', getAllContacts)
@@ -19,9 +19,7 @@ mContactsRoute.get('/', getAllContacts)
 mContactsRoute.post('/', postNewContact)
 
 // Getting a single post
-mContactsRoute.get('/:id', (req, res, next) => {
-
-})
+mContactsRoute.get('/:id', getSingleContactById)
 
 // Updating a post
 mContactsRoute.put('/:id', (req, res, next) => {
