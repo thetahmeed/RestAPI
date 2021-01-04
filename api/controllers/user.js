@@ -32,7 +32,38 @@ const singUpUser = (req, res, next) => {
 }
 
 const singInUser = (req, res, next) => {
-    res.send('Hi old user')
+    let userEmail = req.body.email
+    let userPassword = req.body.password
+
+    
+    User.findOne({email: userEmail})
+        .then(data => {
+            // checking email is used or not
+            if(data){
+                // password is matched ot not
+                mBcrypt.compare(userPassword, data.password, (err, result) => {
+                    if(err){
+                        res.json({
+                            message: "Error:",
+                        })
+                    }
+
+                    if(result){
+                        res.send('Log in complete')
+                    }else{
+                        res.send('Worng password')
+                    }
+
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: "Error:",
+                error: err
+            })
+        })
+
 }
 
 const allUser = (req, res, next) => {
