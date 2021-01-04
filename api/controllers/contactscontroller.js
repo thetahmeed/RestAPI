@@ -50,9 +50,25 @@ const getSingleContactById = (req, res, next) => {
 }
 
 const updateContactById = (req, res, next) => {
-    
 
+    // getting id
+    let getId = req.params.id
 
+    // getting updated data
+    let updatedData = {
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email
+    }
+
+    mContactsModel.findByIdAndUpdate(getId, { $set: updatedData })
+        .then(data => res.status(200).json(data))
+        .catch(err => {
+            res.status(500).json({
+                message: "Error:",
+                error: err
+            })
+        })
 
 }
 

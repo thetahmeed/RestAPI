@@ -28,11 +28,7 @@ mContactsRoute.post('/', postNewContact)
 mContactsRoute.get('/:id', getSingleContactById)
 
 // Updating a post
-mContactsRoute.put('/:id', (req, res, next) => {
-    res.json({
-        message: "Updating a post"
-    })
-})
+mContactsRoute.put('/:id', updateContactById)
 
 // Deleting a post
 mContactsRoute.delete('/:id', deleteContactById)
