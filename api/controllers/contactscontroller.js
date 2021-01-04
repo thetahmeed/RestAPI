@@ -61,7 +61,7 @@ const updateContactById = (req, res, next) => {
         email: req.body.email
     }
 
-    mContactsModel.findByIdAndUpdate(getId, { $set: updatedData })
+    mContactsModel.findByIdAndUpdate(getId, { $set: updatedData }, {new: true})
         .then(data => res.status(200).json(data))
         .catch(err => {
             res.status(500).json({
