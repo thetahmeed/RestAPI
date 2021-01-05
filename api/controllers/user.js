@@ -4,7 +4,10 @@
 
 
 
-//
+// to create a token to ckeck user is logged in or not
+const mJsonWebToken = require('jsonwebtoken')
+
+// to dcryprt user password
 const mBcrypt = require('bcrypt')
 
 // getting user model
@@ -49,7 +52,18 @@ const singInUser = (req, res, next) => {
                     }
 
                     if(result){
-                        res.send('Log in complete')
+                        
+                        // we create the token if log in is successful
+                        let mToken = mJsonWebToken.sign(
+                            {email: data.email, _id: data._id}, 
+                            'SECRET', 
+                            {expiresIn: '2h'}
+                            )
+
+                        res.status(200).json({
+                            message: 'Log in complete',
+                            token: mToken
+                        })
                     }else{
                         res.send('Worng password')
                     }
