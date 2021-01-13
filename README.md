@@ -10,3 +10,8 @@
 // 1. Model
 // 2. Route (npm Validator)
 // 3. Controller (npm bcrypt)
+
+// This is the README.txt for User Auth token:
+// 1. creating tiken (npm i jsonwebtoken)
+// 2. creating middleware (api > middleware > auth.js)
+// 3. user the middleware (route.get('/all', authenticate, controller.allUser))
