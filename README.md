@@ -3,8 +3,8 @@
 
 ### I1. app.use(express.urlencoded({extended: true}))
 
-// I2. When you are using different PORT for backend or fontend then you have to user CORS.
-// More: https://www.npmjs.com/package/cors
+### I2. When you are using different PORT for backend or fontend then you have to user CORS.
+### More: https://www.npmjs.com/package/cors
 
 // This is the README.txt for User Auth:
 // 1. Model
