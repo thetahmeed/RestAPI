@@ -1,7 +1,7 @@
-# RestAPI_With_NodeJS
-## basic things about REST API by node JS
+# RestAPI_With_ExpressJS
+## basic things about REST API by express JS
 
-// I1. app.use(express.urlencoded({extended: true}))
+### I1. app.use(express.urlencoded({extended: true}))
 
 // I2. When you are using different PORT for backend or fontend then you have to user CORS.
 // More: https://www.npmjs.com/package/cors
